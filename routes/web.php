@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Retorna a lista de contatos
+Route::get('/', function() {
+    return view('list');
+});
+
+Route::get('novo-contato', function() {
+    return view('contact');
 });
