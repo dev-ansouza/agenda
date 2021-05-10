@@ -16,7 +16,7 @@
             </span> 
         </h1>
 
-        <button type="button" class="btn btn-danger pull-right">Novo contato</button>
+        <button type="button" class="btn btn-danger pull-right" >Novo contato</button>
 
         <table class="table">
             <thead>
