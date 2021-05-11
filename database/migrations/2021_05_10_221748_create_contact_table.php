@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->string('nome');
             $table->string('email');
             $table->string('telefone');
-            $table->string('Mensagem');
+            $table->string('mensagem');
             $table->string('anexo');
             $table->string('ip_remetente');
             $table->datetime('dt_envio');

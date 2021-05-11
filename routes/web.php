@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Retorna a lista de contatos
-Route::get('/', function() {
-    return view('list');
-});
+Route::get('list', 'ContactController@index');
 
-Route::get('novo-contato', function() {
-    return view('contact');
-});
+//Busca o id do contato para edição
+// Route::get('/contato/{id}/edit/','ContactController@edit');
