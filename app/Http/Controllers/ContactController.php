@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models;
 use Redirect,Response;
+use Illuminate\Support\Facades\DB;
+use stdClass;
+
 class ContactController extends Controller
 {
 
@@ -13,7 +16,13 @@ class ContactController extends Controller
 	*/
 	public function index()
 	{
-		
+		//Retorna todos os contatos
+		$results = DB::select('select * from contact');
+
+		//Converte os resultados para JSON e armazena na array $data
+		$data['contacts'] = json_decode(json_encode($results), true);
+
+		return view('list', $data);
 	}
 
 	/**
@@ -43,7 +52,7 @@ class ContactController extends Controller
 	* @param int $id
 	* @return \Illuminate\Http\Response
 	*/
-	public function show(Contact $contact)
+	public function show()
 	{
 
 	}

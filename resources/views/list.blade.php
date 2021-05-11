@@ -9,7 +9,7 @@
   <body>
     
     <div class="container">
-      <div id="cotnainer">
+      <div id="container">
         <h1 class="title-contatos">
             <span class="negrito">
                 Lista de contatos
@@ -29,23 +29,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                </tr>
-                <tr>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                <th scope="row">teste</th>
-                </tr>
+              @if($contacts)
+                @foreach($contacts as $contact)
+                  <tr>
+                    <th scope="row">{{$contact['nome']}}</th>
+                    <th scope="row">{{$contact['email']}}</th>
+                    <th scope="row">{{$contact['telefone']}}</th>
+                    <th scope="row">{{$contact['mensagem']}}</th>
+                    <th scope="row">{{$contact['anexo']}}</th>
+                  </tr>
+                @endforeach
+              @else
+              <p>Não existem dados cadastrados!</p>
+              @endif
             </tbody>
         </table>
-      <!-- </div> -->
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
