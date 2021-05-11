@@ -15,7 +15,8 @@ use App\Http\Controllers\ContactController;
 */
 
 //Retorna a lista de contatos
-Route::get('list', [ContactController::class, 'index']);
+Route::get('/', [ContactController::class, 'index'])->name('list');
 
-//Busca o id do contato para edição
-// Route::get('/contato/{id}/edit/','ContactController@edit');
+route::get('/contact', function(){
+    return view('contact');
+})->name('contact');

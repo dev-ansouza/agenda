@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lista de contatos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -9,42 +10,47 @@
   <body>
     
     <div class="container">
-      <div id="container">
-        <h1 class="title-contatos">
-            <span class="negrito">
-                Lista de contatos
-            </span> 
-        </h1>
 
-        <button type="button" class="btn btn-danger pull-right" >Novo contato</button>
+        <div class="col-sm-12">
+          <h1 class="title-contatos">
+              <span class="negrito">
+                  Lista de contatos
+              </span> 
+          </h1>
+        </div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Mensagem</th>
-                <th scope="col">Anexo</th>
-                </tr>
-            </thead>
-            <tbody>
-              @if($contacts)
-                @foreach($contacts as $contact)
+        <div class="col-sm-12">
+          <a type="button" class="btn btn-danger pull-right" href="{{route('contact')}}">Novo contato</a>
+        </div>
+
+        <div class="container col-sm-12">
+          <table class="table">
+              <thead>
                   <tr>
-                    <th scope="row">{{$contact['nome']}}</th>
-                    <th scope="row">{{$contact['email']}}</th>
-                    <th scope="row">{{$contact['telefone']}}</th>
-                    <th scope="row">{{$contact['mensagem']}}</th>
-                    <th scope="row">{{$contact['anexo']}}</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Mensagem</th>
+                  <th scope="col">Anexo</th>
                   </tr>
-                @endforeach
-              @else
-              <p>Não existem dados cadastrados!</p>
-              @endif
-            </tbody>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                @if($contacts)
+                  @foreach($contacts as $contact)
+                    <tr v-for="$contacts in $contact">
+                      <th scope="row">{{$contact['nome']}}</th>
+                      <th scope="row">{{$contact['email']}}</th>
+                      <th scope="row">{{$contact['telefone']}}</th>
+                      <th scope="row">{{$contact['mensagem']}}</th>
+                      <th scope="row">{{$contact['anexo']}}</th>
+                    </tr>
+                  @endforeach
+                @else
+                <p>Não existem dados cadastrados!</p>
+                @endif
+              </tbody>
+          </table>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
