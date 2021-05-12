@@ -42,7 +42,15 @@
                       <th scope="row">{{$contact['email']}}</th>
                       <th scope="row">{{$contact['telefone']}}</th>
                       <th scope="row">{{$contact['mensagem']}}</th>
-                      <th scope="row">{{$contact['anexo']}}</th>
+                      <th scope="row">
+                        @if($contact['anexo'] !== '')
+                          <span>
+                            <a href="../storage/app/{{$contact['anexo']}}" target="_blank">anexo</a>
+                          </span>
+                          @else
+                          <span style="text-align: center;">-</span>
+                          @endif
+                      </th>
                     </tr>
                   @endforeach
                 @else
