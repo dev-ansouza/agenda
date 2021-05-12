@@ -27,11 +27,11 @@
           <table class="table">
               <thead>
                   <tr>
-                  <th scope="col">Nome</th>
-                  <th scope="col">E-mail</th>
-                  <th scope="col">Telefone</th>
-                  <th scope="col">Mensagem</th>
-                  <th scope="col">Anexo</th>
+                  <th class="col-sm-2">Nome</th>
+                  <th class="col-sm-2">E-mail</th>
+                  <th class="col-sm-2">Telefone</th>
+                  <th class="col-sm-4">Mensagem</th>
+                  <th class="col-sm-1">Anexo</th>
                   </tr>
               </thead>
               <tbody>

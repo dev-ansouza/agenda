@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models;
+use App\Mail\SendEmailContact;
 use DateTime;
 use DateTimeZone;
 use Redirect,Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use stdClass;
 
 class ContactController extends Controller
@@ -105,6 +107,10 @@ class ContactController extends Controller
 
 			//Cria um novo contato.
 			Contact::create($data);
+
+			//Envia o email para o usuário
+			Mail::to( config("mail.from.address"))
+				->send( new SendEmailContact($data) );
 		}
 
 		//Retorna para a view de listagem
