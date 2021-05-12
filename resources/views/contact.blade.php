@@ -19,7 +19,7 @@
         </div>
 
         <div class="row">
-            <form action="{{route('post.contact')}}" method="POST">
+            <form action="{{route('post.contact')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-sm-12">
                     <div class="form-group col-sm-6">
@@ -49,7 +49,7 @@
                 <div class="col-sm-12">
                     <div class="form-group col-sm-12">
                         <label for="anexo">Anexo</label>
-                        <input id="anexo" name="anexo" class="input-file" type="file">
+                        <input id="anexo" name="anexo" class="input-file" type="file" >
                     </div>
                 </div> 
                     

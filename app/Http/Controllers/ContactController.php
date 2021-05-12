@@ -48,29 +48,39 @@ class ContactController extends Controller
 	public function store(Request $request)
 	{
 		//Recebe a requisição
-		$request = $request->all();
+		$data = $request->all();
 
 		//Define a zona de tempo para a de São Paulo...
 		date_default_timezone_set('America/Sao_Paulo');
-
+		
+		//Armazena a data e hora atual
 		$date = new DateTime();
 		$date = $date->format('Y-m-d H:i:s');
 		
 		//Armazena o ip do usuário
 		$ip_remetente = $_SERVER["REMOTE_ADDR"];
 
+		//Array que armazena os dados a serem salvos
 		$data = [
-			'nome' => $request['nome'],
-			'email' => $request['email'],
-			'telefone' => $request['telefone'],
-			'mensagem' => $request['mensagem'],
+			'nome' => $data['nome'],
+			'email' => $data['email'],
+			'telefone' => $data['telefone'],
+			'mensagem' => $data['mensagem'],
 			'ip_remetente' => $ip_remetente,
-			'anexo' => $request['anexo'],
 			'dt_envio' => $date
 		];
 
+		//Verifica se foi inserido um anexo
+		if($request->file('anexo') !== null){
+			//Verifica se o anexo é válido
+			if ($request->file('anexo')->isValid()) {
+				//Salva o arquivo na pasta que armazena os files e altera o nome o arquivo na requisição para o seu caminho
+				$data['anexo'] = $request->file('anexo')->store('files');
+			}
+		}
+
 		//Verifica se foi informado o id do contato
-		if (!empty($request['id'])) {
+		if (!empty($data['id'])) {
 
 			$data['id']->array_push($request['id']);
 
