@@ -72,10 +72,24 @@ class ContactController extends Controller
 
 		//Verifica se foi inserido um anexo
 		if($request->file('anexo') !== null){
+
 			//Verifica se o anexo é válido
 			if ($request->file('anexo')->isValid()) {
-				//Salva o arquivo na pasta que armazena os files e altera o nome o arquivo na requisição para o seu caminho
-				$data['anexo'] = $request->file('anexo')->store('files');
+
+				//Verifica se o arquivo é maior ou igual a 500kb
+				if($request->file('anexo')->getSize() <= '500000'){
+
+					//Verifica se o arquivo anexo tem a extensão pdf,doc,docs,odt ou txt...
+					if($request->file('anexo')->extension() === 'pdf' || 
+						$request->file('anexo')->extension() === 'doc' ||
+						$request->file('anexo')->extension() === 'docx' ||
+						$request->file('anexo')->extension() === 'odt' ||
+						$request->file('anexo')->extension() === 'txt'
+					){
+						//Salva o arquivo na pasta que armazena os files e altera o nome o arquivo na requisição para o seu caminho
+						$data['anexo'] = $request->file('anexo')->store('files');
+					}
+				}
 			}
 		}
 
