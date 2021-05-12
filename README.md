@@ -3,6 +3,9 @@
 1 - Na pasta htdocs do xampp criar uma nova pasta chamada "agenda"
 git clone do projeto - na pasta htdocs/agenda
 
+2 - Executar o comando dentro da pasta para instalar todos os componentes
+composer install
+
 2 - Executar o xampp (caso nao tenha... faça o donwload)
 iniciar apache e mysql
 
