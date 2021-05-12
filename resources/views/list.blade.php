@@ -37,7 +37,7 @@
               <tbody>
                 @if($contacts)
                   @foreach($contacts as $contact)
-                    <tr v-for="$contacts in $contact">
+                    <tr>
                       <th scope="row">{{$contact['nome']}}</th>
                       <th scope="row">{{$contact['email']}}</th>
                       <th scope="row">{{$contact['telefone']}}</th>
@@ -46,7 +46,9 @@
                     </tr>
                   @endforeach
                 @else
-                <p>Não existem dados cadastrados!</p>
+                <th>
+                    <h3>Não existem dados cadastrados!</h3>
+                </th>
                 @endif
               </tbody>
           </table>

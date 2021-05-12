@@ -1,7 +1,11 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models;
+use DateTime;
+use DateTimeZone;
 use Redirect,Response;
 use Illuminate\Support\Facades\DB;
 use stdClass;
@@ -43,7 +47,44 @@ class ContactController extends Controller
 	*/
 	public function store(Request $request)
 	{
+		//Recebe a requisição
+		$request = $request->all();
 
+		//Define a zona de tempo para a de São Paulo...
+		date_default_timezone_set('America/Sao_Paulo');
+
+		$date = new DateTime();
+		$date = $date->format('Y-m-d H:i:s');
+		
+		//Armazena o ip do usuário
+		$ip_remetente = $_SERVER["REMOTE_ADDR"];
+
+		$data = [
+			'nome' => $request['nome'],
+			'email' => $request['email'],
+			'telefone' => $request['telefone'],
+			'mensagem' => $request['mensagem'],
+			'ip_remetente' => $ip_remetente,
+			'anexo' => $request['anexo'],
+			'dt_envio' => $date
+		];
+
+		//Verifica se foi informado o id do contato
+		if (!empty($request['id'])) {
+
+			$data['id']->array_push($request['id']);
+
+			//Atualiza os dados de contato.
+			Contact::update($data);
+
+		} else {
+
+			//Cria um novo contato.
+			Contact::create($data);
+		}
+
+		//Retorna para a view de listagem
+		return redirect('/');
 	}
 
 	/**

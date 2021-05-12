@@ -17,6 +17,10 @@ use App\Http\Controllers\ContactController;
 //Retorna a lista de contatos
 Route::get('/', [ContactController::class, 'index'])->name('list');
 
+//Retorna a tela de cadastro/edição de contato
 route::get('/contact', function(){
     return view('contact');
 })->name('contact');
+
+//Método POST para cadastro/edição de contato
+Route::post('contact', [ContactController::class, 'store'])->name('post.contact');

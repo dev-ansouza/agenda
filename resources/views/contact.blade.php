@@ -19,44 +19,44 @@
         </div>
 
         <div class="row">
-            <form method="POST" class="needs-validation">
-
+            <form action="{{route('post.contact')}}" method="POST">
+                @csrf
                 <div class="col-sm-12">
                     <div class="form-group col-sm-6">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Insira seu nome" required>
+                        <input type="text" class="form-control" id="nome" name=nome placeholder="Seu nome" required>
                     </div>
                     <div class="form-group col-sm-6">
                         <label for="email">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="Insira seu e-mail" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Seu e-mail" required>
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group col-sm-6">
                         <label for="telefone">Telefone</label>
-                        <input type="tel" class="form-control" id="telefone" placeholder="Insira seu telefone" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
+                        <input type="tel" class="form-control" id="telefone" name=telefone placeholder="(99) 99999-9999" maxlength="15" pattern="\(\d{2}\)\s*\d{5}-\d{4}" required>
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group col-sm-12">
                         <label for="telefone">Mensagem</label>
-                        <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Insira sua mensagem" required></textarea>
+                        <textarea class="form-control" id="mensagem" name="mensagem" placeholder="Insira sua mensagem"></textarea>
                     </div>
                 </div>
 
                 <div class="col-sm-12">
                     <div class="form-group col-sm-12">
-                        <label for="arquivo">Anexo</label>
-                        <input id="arquivo" name="arquivo" class="input-file" type="file">
+                        <label for="anexo">Anexo</label>
+                        <input id="anexo" name="anexo" class="input-file" type="file">
                     </div>
                 </div> 
                     
                 <div class="col-sm-12">
                     <div class="form-group col-sm-12">
-                        <a type="submit" class="btn btn-primary">Cadastrar</a>
-                        <a type="submit" class="btn btn-danger" href="{{route('list')}}">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <a type="button" class="btn btn-danger" href="{{route('list')}}">Cancelar</a>
                     </div>
                 </div>
             </form>
